@@ -1,0 +1,37 @@
+<section class="dashboard">
+  <h1>Employee Dashboard</h1>
+
+  <div *ngIf="loading" class="status">Loading employees...</div>
+  <div *ngIf="error" class="status error">{{ error }}</div>
+
+  <div class="table-wrapper" *ngIf="!loading && employees.length">
+    <table aria-label="Employee list">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Department</th>
+          <th>Location</th>
+          <th>Salary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of pagedEmployees">
+          <td [title]="employee.name">{{ employee.name }}</td>
+          <td [title]="employee.email">{{ employee.email }}</td>
+          <td [title]="employee.department">{{ employee.department }}</td>
+          <td [title]="employee.location">{{ employee.location }}</td>
+          <td [title]="employee.salary | number">{{ employee.salary | number }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination" *ngIf="!loading && employees.length">
+    <button type="button" (click)="previousPage()" [disabled]="!canGoPrevious || loading">Previous</button>
+    <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+    <button type="button" (click)="nextPage()" [disabled]="!canGoNext || loading">Next</button>
+  </div>
+
+  <p *ngIf="!loading && !employees.length && !error" class="status">No employees found.</p>
+</section>

@@ -1,0 +1,50 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+# =========================
+# Angular / Node.js
+# =========================
+ui/node_modules/
+ui/dist/
+ui/.angular/
+ui/coverage/
+ui/.sass-cache/
+ui/npm-debug.log*
+ui/yarn-debug.log*
+ui/pnpm-debug.log*
+
+# Environment files and secrets
+ui/.env
+ui/.env.*
+!ui/.env.example

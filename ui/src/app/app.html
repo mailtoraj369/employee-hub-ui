@@ -1,0 +1,9 @@
+<nav class="top-nav" *ngIf="authService.isAuthenticated()">
+  <div class="nav-links">
+    <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/report">Reports</a>
+  </div>
+  <button type="button" class="logout-btn" (click)="logout()">Logout</button>
+</nav>
+
+<router-outlet />

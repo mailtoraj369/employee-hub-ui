@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: employee-hub-ui
+  profiles:
+    active: dev
+
+logging:
+  level:
+    root: INFO
+    com.acme.employeehub.ui: DEBUG
+    org.springframework.web.client: DEBUG
+    org.springframework.web: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always

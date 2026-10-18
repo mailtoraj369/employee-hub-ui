@@ -1,0 +1,77 @@
+<section class="report">
+  <h1>Employee Reports</h1>
+
+  <div *ngIf="loading" class="status">Loading reports...</div>
+  <div *ngIf="error" class="status error">{{ error }}</div>
+
+  <div class="tabs" *ngIf="!loading">
+    <button
+      type="button"
+      class="tab-button"
+      [class.active]="selectedTab === 'country'"
+      (click)="selectedTab = 'country'"
+    >
+      Employees by Country
+    </button>
+    <button
+      type="button"
+      class="tab-button"
+      [class.active]="selectedTab === 'salary'"
+      (click)="selectedTab = 'salary'"
+    >
+      Highest Paid Employees
+    </button>
+  </div>
+
+  <div class="report-grid" *ngIf="!loading">
+    <div class="panel" *ngIf="selectedTab === 'country'">
+      <h2>Employees by Country</h2>
+      <div class="table-scroll" *ngIf="countryCounts.length; else noCountryCounts">
+        <table>
+          <thead>
+            <tr>
+              <th>Location</th>
+              <th>Employee Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let country of countryCounts">
+              <td [title]="country.location">{{ country.location }}</td>
+              <td [title]="country.employeeCount">{{ country.employeeCount }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ng-template #noCountryCounts>
+        <p class="status">No country data available.</p>
+      </ng-template>
+    </div>
+
+    <div class="panel" *ngIf="selectedTab === 'salary'">
+      <h2>Highest Paid Employees</h2>
+      <div class="table-scroll" *ngIf="highestPaidEmployees.length; else noEmployee">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Department</th>
+              <th>Location</th>
+              <th>Salary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of highestPaidEmployees">
+              <td [title]="employee.name">{{ employee.name }}</td>
+              <td [title]="employee.department">{{ employee.department }}</td>
+              <td [title]="employee.location">{{ employee.location }}</td>
+              <td [title]="employee.salary | number">{{ employee.salary | number }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ng-template #noEmployee>
+        <p class="status">No employee data available.</p>
+      </ng-template>
+    </div>
+  </div>
+</section>
