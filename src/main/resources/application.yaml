@@ -4,6 +4,11 @@ spring:
   profiles:
     active: dev
 
+employee:
+  hub:
+    service:
+      base-url: http://localhost:9090
+
 logging:
   level:
     root: INFO
@@ -14,6 +19,7 @@ logging:
 management:
   endpoints:
     web:
+      base-path: /api/actuator
       exposure:
         include: health,metrics,prometheus
   endpoint:

@@ -1,0 +1,4 @@
+employee:
+  hub:
+    service:
+      base-url: http://employee-hub-svc:9090

@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/actuator")
+@RequestMapping({"/api/metrics", "/api/actuator"})
 public class MetricsController {
 
-    @GetMapping("/custom-metrics")
+    @GetMapping(value = {"", "/custom-metrics", "/custom"})
     public Map<String, Object> getCustomMetrics() {
         return Map.of(
                 "employee-controller.count", ApiMetrics.getCount("EmployeeController.getEmployees"),
@@ -20,6 +20,15 @@ public class MetricsController {
                 "highest-paid.avg-ms", ApiMetrics.getAverageTimeMs("EmployeeController.getHighestPaidEmployee"),
                 "country-counts.count", ApiMetrics.getCount("EmployeeController.getCountryCounts"),
                 "country-counts.avg-ms", ApiMetrics.getAverageTimeMs("EmployeeController.getCountryCounts")
+        );
+    }
+
+    @GetMapping("/summary")
+    public Map<String, Object> getSummaryMetrics() {
+        return Map.of(
+                "basePath", "/api/actuator",
+                "customMetricsPath", "/api/metrics",
+                "available", new String[]{"health", "metrics", "prometheus", "custom-metrics"}
         );
     }
 }

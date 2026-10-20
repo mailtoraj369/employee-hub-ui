@@ -2,6 +2,7 @@ package com.acme.employeehub.ui.client;
 
 import com.acme.employeehub.ui.dto.CountryEmployeeCountDto;
 import com.acme.employeehub.ui.dto.EmployeeDto;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
@@ -12,9 +13,10 @@ import java.util.List;
 public class EmployeeRestClient {
     private final RestClient restClient;
 
-    public EmployeeRestClient(RestClient.Builder restClientBuilder) {
+    public EmployeeRestClient(RestClient.Builder restClientBuilder,
+                              @Value("${employee.hub.service.base-url}") String baseUrl) {
         this.restClient = restClientBuilder
-                .baseUrl("http://localhost:9090")
+                .baseUrl(baseUrl)
                 .build();
     }
 

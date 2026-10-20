@@ -1,0 +1,4 @@
+employee:
+  hub:
+    service:
+      base-url: http://localhost:9090
