@@ -1,12 +1,13 @@
 package com.acme.employeehub.ui.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.boot.webmvc.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class UiErrorController implements org.springframework.boot.web.servlet.error.ErrorController {
+public class UiErrorController implements ErrorController {
 
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request) {

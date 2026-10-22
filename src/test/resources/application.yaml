@@ -1,0 +1,36 @@
+httpport: 8080
+httpsport: 8444
+
+spring:
+  application:
+    name: employee-hub-ui
+  profiles:
+    active: test
+
+server:
+  port: 8080
+
+employee:
+  hub:
+    service:
+      base-url: http://localhost:8080
+      use-ssl: false
+      connect-timeout-ms: 3000
+      read-timeout-ms: 3000
+
+logging:
+  level:
+    root: INFO
+    com.acme.employeehub.ui: DEBUG
+    org.springframework.web.client: DEBUG
+    org.springframework.web: INFO
+
+management:
+  endpoints:
+    web:
+      base-path: /api/actuator
+      exposure:
+        include: health,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always

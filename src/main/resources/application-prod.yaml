@@ -2,5 +2,6 @@ employee:
   hub:
     service:
       base-url: http://employee-hub-svc:9090
+      use-ssl: false
       connect-timeout-ms: 3000
       read-timeout-ms: 3000
