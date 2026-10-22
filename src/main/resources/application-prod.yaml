@@ -1,7 +1,30 @@
+spring:
+  ssl:
+    bundle:
+      jks:
+        employee-hub-service:
+          truststore:
+            location: classpath:certs/employee-hub-ui-truststore.p12
+            password: ${TRUST_STORE_PASSWORD}
+            type: PKCS12
+        web-server:
+          key:
+            alias: employee-ui-ssl
+          keystore:
+            location: classpath:certs/employee-ui-ssl.p12
+            password: ${CERT_PASSWORD}
+            type: PKCS12
+
+server:
+  port: ${httspport:8444}
+  ssl:
+    bundle: web-server
+
 employee:
   hub:
     service:
-      base-url: http://employee-hub-svc:9090
-      use-ssl: false
+      base-url: https://employee-hub-svc:8443
+      use-ssl: true
       connect-timeout-ms: 3000
       read-timeout-ms: 3000
+

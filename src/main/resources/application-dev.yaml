@@ -1,11 +1,3 @@
-employee:
-  hub:
-    service:
-      base-url: https://localhost:8443
-      use-ssl: true
-      connect-timeout-ms: 3000
-      read-timeout-ms: 3000
-
 spring:
   ssl:
     bundle:
@@ -27,3 +19,11 @@ server:
   port: ${httspport:8444}
   ssl:
     bundle: web-server
+
+employee:
+  hub:
+    service:
+      base-url: https://localhost:8443
+      use-ssl: true
+      connect-timeout-ms: 3000
+      read-timeout-ms: 3000
